@@ -8,5 +8,5 @@ import retrofit2.http.Path;
 public interface BitstampService {
     @Headers("Accept: application/json")
     @GET("neki/neki")
-    Call<neki> dejMiNeki(@Path("udid") String udid);
+    Call<String> dejMiNeki(@Path("udid") String udid);
 }
