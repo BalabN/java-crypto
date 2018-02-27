@@ -1,25 +1,25 @@
 package logic;
 
-import models.Transaction;
+import java.util.List;
 
-import java.util.ArrayList;
+import models.Transaction;
 
 public class LinearRegression {
 
-    int MAXN = 1000;
-    int n = 0;
-    double[] x = new double[MAXN];
-    double[] y = new double[MAXN];
+    private int MAXN = 1000;
+    private int n = 0;
+    private int[] x = new int[MAXN];
+    private float[] y = new float[MAXN];
 
-    public LinearRegression(ArrayList<Transaction> transactions){
+    public LinearRegression(List<Transaction> transactions) {
         double sumx = 0.0, sumy = 0.0, sumx2 = 0.0;
 
-        for (Transaction trans: transactions) {
+        for (Transaction trans : transactions) {
             x[n] = trans.getDate();
             y[n] = trans.getPrice();
-            sumx  += x[n];
+            sumx += x[n];
             sumx2 += x[n] * x[n];
-            sumy  += y[n];
+            sumy += y[n];
             n++;
         }
 
@@ -40,14 +40,14 @@ public class LinearRegression {
         double rss = 0.0;      // residual sum of squares
         double ssr = 0.0;      // regression sum of squares
         for (int i = 0; i < n; i++) {
-            double fit = beta1*x[i] + beta0;
+            double fit = beta1 * x[i] + beta0;
             rss += (fit - y[i]) * (fit - y[i]);
             ssr += (fit - ybar) * (fit - ybar);
         }
-        double R2    = ssr / yybar;
-        double svar  = rss / df;
+        double R2 = ssr / yybar;
+        double svar = rss / df;
         double svar1 = svar / xxbar;
-        double svar0 = svar/n + xbar*xbar*svar1;
+        double svar0 = svar / n + xbar * xbar * svar1;
 
         System.out.println("R^2                 = " + R2);
         System.out.println("std error of beta_1 = " + Math.sqrt(svar1));

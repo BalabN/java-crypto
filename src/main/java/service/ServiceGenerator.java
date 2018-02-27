@@ -8,10 +8,11 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.jackson.JacksonConverterFactory;
+import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class ServiceGenerator {
     public enum ApiEndpoint {
-        //vsi bitstamp api klici
+        // vsi bitstamp api klici
         BITSTAMP("https://www.bitstamp.net/api/");
 
         public final String url;
@@ -29,6 +30,7 @@ public class ServiceGenerator {
     private static Retrofit.Builder createRetrofitBuilder(String url) {
         return new Retrofit.Builder()
                 .baseUrl(url)
+                .addConverterFactory(ScalarsConverterFactory.create())
                 .addConverterFactory(JacksonConverterFactory.create(setUpJackson()))
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create());
     }
