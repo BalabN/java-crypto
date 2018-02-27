@@ -23,11 +23,17 @@
     <name>Java crypto</name>
 
     <properties>
-        <jackson.version>2.3.0</jackson.version>
+        <jackson.version>2.9.4</jackson.version>
         <retrofit.version>2.3.0</retrofit.version>
+        <json.version>20170516</json.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>${json.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
@@ -36,6 +42,11 @@
         <dependency>
             <groupId>com.squareup.retrofit2</groupId>
             <artifactId>retrofit</artifactId>
+            <version>${retrofit.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.squareup.retrofit2</groupId>
+            <artifactId>converter-scalars</artifactId>
             <version>${retrofit.version}</version>
         </dependency>
         <dependency>
