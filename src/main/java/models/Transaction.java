@@ -1,40 +1,53 @@
 package models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonPropertyOrder({
+        "date",
+        "tid",
+        "price",
+})
 public class Transaction {
-    private String tid;
-    private float price;
-    private int date;
 
-    public Transaction(){
+    @JsonProperty("date")
+    private String date;
+    @JsonProperty("tid")
+    private int tid;
+    @JsonProperty("price")
+    private String price;
 
+    @JsonProperty("date")
+    public int getDate() {
+        return Integer.parseInt(date);
     }
-    public Transaction(String tid, float price, int date){
-        this.tid = tid;
-        this.price = price;
+
+    @JsonProperty("date")
+    public void setDate(String date) {
         this.date = date;
     }
 
-    public String getTid(){
-        return this.tid;
+    @JsonProperty("tid")
+    public int getTid() {
+        return tid;
     }
 
-    public void setTid(String tid){
+    @JsonProperty("tid")
+    public void setTid(int tid) {
         this.tid = tid;
     }
 
-    public float getPrice (){
-        return this.price;
+    @JsonProperty("price")
+    public float getPrice() {
+        return Float.parseFloat(price);
     }
 
-    public void setPrice(float price){
+    @JsonProperty("price")
+    public void setPrice(String price) {
         this.price = price;
     }
-    public int getDate(){
-        return this.date;
-    }
-    public void setDate(int date){
-        this.date = date;
-    }
-
-
 }
