@@ -26,9 +26,6 @@ public class ServiceGenerator {
         }
     }
 
-    private static final String USERNAME = "admin";
-    private static final String PASSWORD = "talkingBoss";
-
     private static Retrofit retrofit(ApiEndpoint endpoint) {
         OkHttpClient client = setUpOkHttpClient(endpoint);
         return createRetrofitBuilder(endpoint.url).client(client).build();
