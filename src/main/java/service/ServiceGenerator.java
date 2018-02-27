@@ -11,7 +11,8 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 
 public class ServiceGenerator {
     public enum ApiEndpoint {
-        WDA_SERVER("http://127.0.0.1");
+        //vsi bitstamp api klici
+        BITSTAMP("https://www.bitstamp.net/api/");
 
         public final String url;
 

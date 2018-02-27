@@ -1,15 +1,18 @@
+import models.Transaction;
 import retrofit2.Response;
 import service.BitstampService;
 import service.ServiceGenerator;
 
+import java.util.List;
+
 public class Main {
 
     public static void main(String[] args) {
-        BitstampService bitstampService = ServiceGenerator.createService(BitstampService.class, ServiceGenerator.ApiEndpoint.WDA_SERVER);
+        BitstampService bitstampService = ServiceGenerator.createService(BitstampService.class, ServiceGenerator.ApiEndpoint.BITSTAMP);
 
-        Response<String> response = null;
+        Response<List<Transaction>> response = null;
         try {
-            response = bitstampService.dejMiNeki("neki").execute();
+            response = bitstampService.getTransactions().execute();
         } catch (Exception e) {
             e.printStackTrace();
         }
